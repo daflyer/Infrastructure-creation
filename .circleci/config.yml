@@ -18,6 +18,7 @@ jobs:
               --template-file template.yml \
               --stack-name myStackForInfra \
               --region us-east-1
+              
 # Sequential workflow
 workflows:
   # Name the workflow
