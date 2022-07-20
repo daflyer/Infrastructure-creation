@@ -19,8 +19,8 @@ jobs:
               --stack-name myStackForInfra \
               --region us-east-1
   configure_infrastructure: 
-    docker: amazon/aws-cli
-      - image: 
+    docker: 
+      - image: amazon/aws-cli
     steps:
       - checkout
       - add_ssh_keys:
