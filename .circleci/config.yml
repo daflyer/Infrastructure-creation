@@ -18,10 +18,28 @@ jobs:
               --template-file template.yml \
               --stack-name myStackForInfra \
               --region us-east-1
-              
+  configure_infrastructure: 
+  docker: amazon/aws-cli
+    - image: 
+  steps:
+    - checkout
+    - add_ssh_keys:
+            # You can get this ID in the section where you registered the SSH Key
+            fingerprints: ["28:12:07:99:b9:4e:be:00:31:41:bc:b7:77:36:75:26"] 
+    - run:
+        name: Install Ansible
+        command: |
+          apk add --update ansible
+    - run:
+        name: Run Playbook and Configure server
+        command: |
+          ansible -playbook-i inventory.txt playbook.yml          
 # Sequential workflow
 workflows:
   # Name the workflow
   myWorkflow:
     jobs:
       - create_infrastructure
+      - configure_infrastructure
+          requires:
+            create_infrastructure
