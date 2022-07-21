@@ -49,8 +49,8 @@ jobs:
       - image: alpine:latest
     steps:
       - run: 
-        name: delete rollback
-        command: return 1
+          name: deleterollback
+          command: return 1
       - destroy_environment  
 
 
