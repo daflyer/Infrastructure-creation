@@ -81,8 +81,7 @@ jobs:
     steps:
       - run:
           name: Test ROllback
-          commands: |
-            return 1
+          commands: return 1
       - destroy_environment:
          when: on fail
 # Sequential workflow
