@@ -62,17 +62,28 @@ jobs:
             else
               return 1
             fi 
-# commands:
-#    # Exercise - Rollback
-#   destroy_environment:
-#     steps:
-#       - run:
-#           name: Destroy environment
-#           # ${CIRCLE_WORKFLOW_ID} is a Built-in environment variable 
-#           # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
-#           when: on_fail
-#           command: |
-#             aws cloudformation delete-stack --stack-name rollback_infrastructure
+  smoke_test:
+    docker:
+      -image: alpine:latest
+    steps:
+      - checkout 
+      run:
+        name: Test ROllback
+        commands:
+          return 1
+      - destroy_environment:
+        when: on fail
+commands:
+   # Exercise - Rollback
+  destroy_environment:
+    steps:
+      - run:
+          name: Destroy environment
+          # ${CIRCLE_WORKFLOW_ID} is a Built-in environment variable 
+          # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
+          when: on_fail
+          command: |
+            aws cloudformation delete-stack --stack-name rollback_infrastructure
 # Sequential workflow
 workflows:
   # Name the workflow
