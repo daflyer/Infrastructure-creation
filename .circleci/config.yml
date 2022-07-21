@@ -43,7 +43,7 @@ jobs:
               --template-file template.yml \
               --stack-name rollbackStack \
               --region us-east-1
-          command: return 1
+           return 1
         when: on_fail
       - destroy_environment 
           
