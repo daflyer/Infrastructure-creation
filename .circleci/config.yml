@@ -64,7 +64,7 @@ jobs:
             fi 
   smoke_test2:
     docker:
-      -image: alpine:latest
+      - image: alpine:latest
     steps:
       run:
         name: Test ROllback
