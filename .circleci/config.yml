@@ -44,7 +44,7 @@ jobs:
               --stack-name rollbackStack \
               --region us-east-1
               ;
-           return 1
+      - run: return 1
         
       - destroy_environment 
       when: on_fail
