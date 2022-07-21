@@ -66,10 +66,10 @@ jobs:
     docker:
       - image: alpine:latest
     steps:
-      run:
-        name: Test ROllback
-        commands: |
-          return 1
+      - run:
+          name: Test ROllback
+          commands: |
+            return 1
       - destroy_environment:
         when: on fail
 commands:
