@@ -44,14 +44,14 @@ jobs:
               --stack-name rollbackStack \
               --region us-east-1
       # - destroy_environment
-  # smoke_test:
-  #   docker:
-  #     - image: alpine:latest
-  #   steps:
-  #     - run: 
-  #       name: delete rollback
-  #       command: return 1
-  #   - destroy_environment  
+  smoke_test:
+    docker:
+      - image: alpine:latest
+    steps:
+      - run: 
+        name: delete rollback
+        command: return 1
+      - destroy_environment  
 
 
      
