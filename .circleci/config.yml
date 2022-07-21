@@ -62,11 +62,10 @@ jobs:
             else
               return 1
             fi 
-  smoke_test:
+  smoke_test2:
     docker:
       -image: alpine:latest
     steps:
-      - checkout 
       run:
         name: Test ROllback
         commands: |
@@ -93,3 +92,4 @@ workflows:
       # - configure_infrastructure
       # - smoke_test
       - rollback_infrastructure
+      - smoke_test2
