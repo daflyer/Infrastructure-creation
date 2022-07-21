@@ -43,9 +43,20 @@ jobs:
               --template-file template.yml \
               --stack-name rollbackStack \
               --region us-east-1
-      - run: return 1
-      - destroy_environment
+      # - destroy_environment
+  # smoke_test:
+  #   docker:
+  #     - image: alpine:latest
+  #   steps:
+  #     - run: 
+  #       name: delete rollback
+  #       command: return 1
+  #   - destroy_environment  
+
+
+     
           # when: on_fail
+
   # configure_infrastructure: 
   #   docker: 
   #     - image: python:3.7-alpine3.11
