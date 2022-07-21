@@ -47,7 +47,7 @@ jobs:
       - run: return 1
         
       - destroy_environment 
-      when: on_fail
+      # when: on_fail
           
       # - destroy_environment
   # smoke_test:
