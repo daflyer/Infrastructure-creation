@@ -43,6 +43,9 @@ jobs:
               --template-file template.yml \
               --stack-name rollbackStack \
               --region us-east-1
+      - run : return 1
+      - delete environment
+        when: on fail
   configure_infrastructure: 
     docker: 
       - image: python:3.7-alpine3.11
@@ -75,15 +78,7 @@ jobs:
   #           else
   #             return 1
   #           fi 
-  smoke_test2:
-    docker:
-      - image: alpine:latest
-    steps:
-      - run:
-          name: Test ROllback
-          commands: return 1
-      - destroy_environment:
-          when: on fail
+
 # Sequential workflow
 workflows:
   # Name the workflow
@@ -93,4 +88,3 @@ workflows:
       # - configure_infrastructure
       # - smoke_test
       - rollback_infrastructure
-      - smoke_test2
